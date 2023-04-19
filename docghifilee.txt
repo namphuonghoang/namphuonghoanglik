@@ -1,0 +1,79 @@
+ofstream outfile; 
+outfile.open("file.dat", ios::out | ios::trunc );
+#include <fstream> 
+#include <iostream> 
+using namespace std; 
+int main () 
+{ 
+    char data[100]; // mo mot file trong che do write. 
+    ofstream outfile; 
+    outfile.open("qtm.dat"); 
+    cout << "Ghi du lieu toi file!" << endl; 
+    cout << "Nhap ten cua ban: "; 
+    cin.getline(data, 100); 
+    // ghi du lieu da nhap vao trong file. 
+    outfile << data << endl; 
+    cout << "Nhap tuoi cua ban: "; 
+    cin >> data; 
+    cin.ignore(); 
+    // ghi du lieu da nhap vao trong file. 
+    outfile << data << endl; 
+    // dong file da mo. 
+    outfile.close(); 
+    //mo mot file trong che do read. 
+    ifstream infile; 
+    infile.open("qtm.dat"); 
+    cout << "\n===========================\n" ; 
+    cout << "Doc du lieu co trong file!" << endl; infile >> data; 
+    // ghi du lieu tren man hinh. 
+    cout << data << endl; 
+    // tiep tuc doc va hien thi du lieu. 
+    infile >> data; cout << data << endl; 
+    // dong file da mo. 
+    infile.close(); 
+    return 0; 
+}
+#include <bits/stdc++.h>
+#include <fstream>
+using namespace std;
+int main()
+{
+	
+	ifstream input("C:\\Users\\minhh\\OneDrive\\Desktop\\input.txt");
+	fstream output;
+	output.open("C:\\Users\\minhh\\OneDrive\\Desktop\\output.txt", ios::out );
+	string str;
+	input>>str; // lấy giá trị biến str từ file input
+	cout<<str; // in str ra màn hình console
+	output<<"Hello world"; //in Hello world vào file output
+	input.close(); //đóng file input
+	output.close(); //đóng file output
+	return 0;
+}
+string line;
+	while(!input.eof())	//khi chưa tới cuối file thì tiếp tục đọc
+	{
+		getline(input,line);
+		output<<line;
+	}
+#include <bits/stdc++.h>
+#include <fstream>
+using namespace std;
+int main()
+{
+	//tạo đối tượng input để đọc dữ liệu đầu vào từ file input.txt
+	ifstream input("C:\\Users\\minhh\\OneDrive\\Desktop\\input.txt");
+	fstream output; //tạo biến output để ghi dữ liệu vào file output.txt
+	output.open("C:\\Users\\minhh\\OneDrive\\Desktop\\output.txt", ios::out);
+	if(input.is_open() && output.is_open())
+	{
+		cout<<"Mo thanh cong!!"<<endl;
+	}
+	else
+	{
+		cout<<"Mo that bai!!"<<endl;
+	}
+        input.close(); // đóng file input
+        output.close(); // đóng file output
+	return 0;
+}
