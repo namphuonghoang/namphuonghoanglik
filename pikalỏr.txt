@@ -1,0 +1,43 @@
+List splitLongestAscending(List &l) {
+    List new_list;
+    new_list.p_head = nullptr;
+    new_list.p_tail = nullptr;
+
+    NODE* p = l.p_head;
+    NODE* start = p;
+    NODE* end = p;
+    int curr_length = 1;
+    int max_length = 1;
+
+    while (p != nullptr) {
+        NODE* next = p->p_next;
+        if (next != nullptr && next->key > p->key) {
+            curr_length++;
+            end = next;
+        } else {
+            if (curr_length > max_length) {
+                max_length = curr_length;
+                new_list.p_head = start;
+                new_list.p_tail = end;
+            }
+            curr_length = 1;
+            start = next;
+            end = next;
+        }
+        p = next;
+    }
+
+    if (max_length == 1) {
+        return new_list;
+    }
+
+    NODE* prev = new_list.p_head;
+    while (prev->p_next != new_list.p_tail) {
+        prev = prev->p_next;
+    }
+    prev->p_next = nullptr;
+
+    l.p_head = new_list.p_tail;
+
+    return new_list;
+}
